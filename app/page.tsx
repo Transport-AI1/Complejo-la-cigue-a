@@ -26,7 +26,8 @@ const experiences = [
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeStay, setActiveStay] = useState(1);
-  const [activeScene, setActiveScene] = useState(0);\n  const [tourOpen, setTourOpen] = useState(false);
+  const [activeScene, setActiveScene] = useState(0);
+  const [tourOpen, setTourOpen] = useState(false);
   const [intro, setIntro] = useState(true);
   useEffect(() => { const t = window.setTimeout(() => setIntro(false), 2000); return () => window.clearTimeout(t); }, []);
   return <main>
