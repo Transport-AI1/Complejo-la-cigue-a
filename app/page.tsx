@@ -28,7 +28,7 @@ export default function Home() {
   const [activeStay, setActiveStay] = useState(1);
   const [activeScene, setActiveScene] = useState(0);
   const [intro, setIntro] = useState(true);
-  useEffect(() => { const t = window.setTimeout(() => setIntro(false), 1650); return () => window.clearTimeout(t); }, []);
+  useEffect(() => { const t = window.setTimeout(() => setIntro(false), 2000); return () => window.clearTimeout(t); }, []);
   return <main>
     {intro && <div className="intro-screen"><div className="intro-panel" /><div className="intro-copy"><span className="eyebrow">ARGANDA DEL REY · MADRID</span><span className="intro-name">Complejo<br/><i>La Cigüeña</i></span><span className="intro-line">Un lugar para volver a la calma</span></div><div className="intro-mark">CL<span>·</span>C</div></div>}
     <header className="site-header">
@@ -63,7 +63,7 @@ export default function Home() {
       <div className="stay-feature" key={activeStay}><div className="stay-photo" style={{backgroundImage:"url("+stays[activeStay].image+")"}}><span className="photo-label">ALOJAMIENTO · {stays[activeStay].name.toUpperCase()}</span></div><div className="stay-copy"><span className="eyebrow">BUNGALOW {stays[activeStay].name.toUpperCase()}</span><h3>{stays[activeStay].subtitle}</h3><p>{stays[activeStay].description}</p><div className="amenity-pills"><span>Wi-Fi gratuito</span><span>Climatización individual</span><span>Baño con ducha</span><span>{stays[activeStay].tag}</span></div><a className="under-link" href={official+"/bungalows-madrid/"} target="_blank" rel="noreferrer">Más información <ArrowUpRight size={15}/></a></div></div>
       <div className="design-note"><span>DISEÑOS DELUXE & SUITE</span><p>Seis inspiraciones, una estancia con personalidad.</p></div>
       <div className="design-grid">{scenes.map((s,i)=><button key={s.title} className={"design-card design-"+s.style+(activeScene===i?" selected":"")} onClick={()=>setActiveScene(i)}><span className="design-index">0{i+1}</span><span className="design-name">{s.title}</span><span className="design-note-small">{s.note}</span></button>)}</div>
-      <div className="viewer-intro"><div><span className="eyebrow">EXPLORA EL ESPACIO</span><h3>Una nueva forma<br/>de <i>imaginar tu estancia.</i></h3><p>Explora un bungalow conceptual en 3D. Puedes girar la cámara, acercarte y descubrir sus volúmenes.</p><span className="concept-label">MODELO 3D ILUSTRATIVO · NO ES UN PLANO OFICIAL</span></div><BungalowViewer styleName={scenes[activeScene].style}/></div>
+      <div className="viewer-intro"><div><span className="eyebrow">EXPLORA EL ESPACIO</span><h3>Una nueva forma<br/>de <i>imaginar tu estancia.</i></h3><p>Recorre una distribución 3D ilustrativa desde arriba o a la altura de los ojos. Cambia de perspectiva y gira la cámara para explorar el espacio.</p><span className="concept-label">RECREACIÓN CONCEPTUAL · DISTRIBUCIÓN NO VERIFICADA</span></div><BungalowViewer styleName={scenes[activeScene].style}/></div>
     </section>
     <section id="experiencias" className="experiences-section section-pad">
       <div className="section-kicker"><span>03 / EXPERIENCIAS</span><span>MÁS QUE UNA ESTANCIA</span></div><div className="section-heading"><h2>Momentos que<br/><i>se convierten en recuerdos.</i></h2><p>Espacios para saborear, celebrar y reconectar con lo que importa.</p></div>
