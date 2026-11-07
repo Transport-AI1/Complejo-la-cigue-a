@@ -1,6 +1,6 @@
 "use client";
 import { Canvas } from "@react-three/fiber";
-import { ContactShadows, Environment, OrbitControls } from "@react-three/drei";
+import { ContactShadows, OrbitControls } from "@react-three/drei";
 import { Suspense, useMemo, useState } from "react";
 
 type Model = "standard" | "deluxe" | "suite";
@@ -101,7 +101,7 @@ export default function BungalowViewer({ styleName, model = "deluxe" }: Props) {
     </div>
     <Canvas key={view+model} camera={{position:camera,fov:view==="top"?43:72}} dpr={[1,1.5]} shadows>
       <color attach="background" args={["#e7e2d8"]}/><ambientLight intensity={1.2}/><directionalLight position={[4,8,5]} intensity={2} castShadow/>
-      <Suspense fallback={null}><Building model={model} styleName={styleName}/><Environment preset="city"/><ContactShadows position={[0,-.03,0]} opacity={.25} scale={12} blur={2.5}/></Suspense>
+      <Suspense fallback={null}><Building model={model} styleName={styleName}/><ContactShadows position={[0,-.03,0]} opacity={.25} scale={12} blur={2.5}/></Suspense>
       <OrbitControls target={target} enablePan={false} minDistance={view==="top"?7:1.2} maxDistance={view==="top"?14:5} minPolarAngle={view==="top"?0:Math.PI/2.8} maxPolarAngle={view==="top"?Math.PI/2.2:Math.PI/1.85}/>
     </Canvas>
     <span className="viewer-hint">{label} · {view==="top"?"ARRASTRA PARA GIRAR":"MIRA A TU ALREDEDOR"}</span>
