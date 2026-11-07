@@ -2,9 +2,9 @@
 import { useState } from "react";
 import { MessageCircle, Send, X, Sparkles } from "lucide-react";
 const answers:[RegExp,string][]=[
- [/bungal|alojamiento|habitación|habitacion|suite|deluxe|standard/i,"El complejo dispone de 54 bungalows exteriores en tres categorías: Standard, Deluxe y Suite. Los Deluxe incluyen decoraciones Al-Ándalus, Zen, Safari y Bauhaus; los Suite, Imperiales e Ibicencos. Para consultar disponibilidad y tarifas, contacta con reservas en el 618 960 055 o reservas@complejolaciguena.com."],
+ [/bungal|alojamiento|habitación|habitacion|suite|deluxe|standard/i,"El complejo dispone de 54 bungalows exteriores en tres categorías: Standard, Deluxe y Suite. Los Deluxe incluyen decoraciones Al-Ándalus, Zen, Safari y Bauhaus; los Suite, Imperiales e Ibicencos. Para consultar disponibilidad y tarifas, contacta con reservas en reservas@complejolaciguena.com."],
  [/wifi|internet|televisión|television|tv|minibar|baño|ducha|aire|calefacción/i,"Los bungalows cuentan con wifi gratuito, climatización individual, baño con ducha, secador y amenities. La web oficial indica TV LCD de 40 pulgadas en Standard y 50 pulgadas en Deluxe y Suite. El minibar puede solicitarse equipado."],
- [/mascota|perro|animal/i,"La web oficial indica que se admite alojamiento con mascotas desde el 7 de julio de 2026, con una tarifa publicada de 10 € por mascota y noche. Consulta las condiciones directamente con reservas."],
+ [/mascota|perro|animal/i,"Consulta con reservas las condiciones y tarifas vigentes para alojarte con mascotas: reservas@complejolaciguena.com."],
  [/restaurante|comer|cena|desayuno|cafetería|cafeteria|chill/i,"El complejo dispone de restaurante, cafetería y zona chill out, además de terraza junto al lago. Para consultas del restaurante puedes escribir a restaurante@complejolaciguena.com o WhatsApp 616 286 106."],
  [/evento|boda|comunión|comunion|empresa|conferencia|reunión|reunion/i,"El complejo organiza bodas, comuniones, celebraciones y eventos de empresa. La sala de conferencias tiene capacidad publicada para 180 personas. Para propuestas y disponibilidad, escribe a eventos@complejolaciguena.com."],
  [/piscina|pádel|padel|parking|aparcamiento|naturaleza|actividad/i,"Entre los servicios publicados se encuentran piscina exterior, pista de pádel, parking privado junto a los bungalows y actividades en el entorno. Algunos servicios pueden ser de temporada; confirma fechas y condiciones con el complejo."],
@@ -12,7 +12,7 @@ const answers:[RegExp,string][]=[
  [/reserv|precio|tarifa|disponibilidad|fecha|booking/i,"No puedo consultar disponibilidad ni confirmar reservas desde esta demo. Puedes contactar directamente con reservas en el 618 960 055 o en reservas@complejolaciguena.com. También puedes visitar la reserva online desde el botón «Reservar»."],
  [/hola|buenos días|buenas|hey/i,"¡Hola! Soy el asistente virtual de Complejo La Cigüeña. Puedo ayudarte con información sobre bungalows, servicios, gastronomía, eventos y cómo llegar. ¿Qué te gustaría saber?"]
 ];
-function reply(q:string){const hit=answers.find(([r])=>r.test(q));return hit?.[1]||"Puedo ayudarte con información sobre bungalows Standard, Deluxe y Suite, servicios, restaurante, eventos y ubicación. Para disponibilidad o precios exactos, te pondré en contacto con el equipo de reservas.";}
+function reply(q:string){const hit=answers.find(([r])=>r.test(q));return hit?.[1]||"Puedo ayudarte con información sobre bungalows Standard, Deluxe y Suite, servicios, restaurante, eventos y ubicación. Para disponibilidad o precios exactos, puedes escribir al equipo de reservas en reservas@complejolaciguena.com.";}
 export default function Concierge(){
  const [open,setOpen]=useState(false);const [value,setValue]=useState("");const [messages,setMessages]=useState<{from:"bot"|"user";text:string}[]>([{from:"bot",text:"¡Hola! Soy el asistente virtual de La Cigüeña. ¿Qué te gustaría descubrir?"}]);
  const send=()=>{const q=value.trim();if(!q)return;setMessages(m=>[...m,{from:"user",text:q},{from:"bot",text:reply(q)}]);setValue("");};
